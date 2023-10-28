@@ -3,7 +3,7 @@ import Title from "./components/Title";
 import Form from "./components/Form"
 import Weather from "./components/Weather"
 
-const API_Key = "xxxxxx";
+const API_Key = "8a4e9026904a474f85f90336232810";
 
 class App extends React.Component {
 
@@ -22,19 +22,26 @@ class App extends React.Component {
     e.preventDefault();
 
     const city = e.target.elements.city.value;
-    const country = e.target.elements.country.value;
+    // const country = e.target.elements.country.value;
 
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${API_Key}`);
+    let APIKEY = process.env.REACT_APP_WEATHER_APIKEY;
+
+    
+    const api_call = await fetch(`http://api.weatherapi.com/v1/forecast.json?q=${city}&key=${APIKEY}`);
     const data = await api_call.json();
+    console.log(APIKEY);
+    console.log("fetching data");
+    console.log(data);
 
-    if (city && country) {
+    if (city) {
 
       this.setState({
-        temperature: data.main.temp,
-        city: data.name,
-        country: data.sys.country,
-        humidity: data.main.humidity,
-        description: data.weather[0].description,
+        temperature: data.current.temp_c,
+        city: data.location.name,
+        country: data.location.country,
+        humidity: data.current.humidity,
+        description: data.current.condition.text,
+        icon: data.current.condition.icon,
         error: ""
 
       }
@@ -51,6 +58,7 @@ class App extends React.Component {
         country: undefined,
         humidity: undefined,
         description: undefined,
+        icon: undefined,
         error: "Please enter the value!"
 
       }
@@ -76,6 +84,7 @@ class App extends React.Component {
                     city={this.state.city}
                     country={this.state.country}
                     description={this.state.description}
+                    icon={this.state.icon}
                     error={this.state.error}
                   />
                 </div>

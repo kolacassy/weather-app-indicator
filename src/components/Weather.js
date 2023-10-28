@@ -19,7 +19,9 @@ const Weather = props => (
 	 }
 	 { 	
 	 	props.description && <p className="weather__key"> Conditions: 
-	 		<span className="weather__value"> { props.description } </span>
+	 		<span className="weather__value"> { props.description } </span> 
+			<span style={({marginLeft: '5px'})}></span>
+			<img src={props.icon} alt={props.description} style={{ width: '40px', }}/>
 	 </p> 
 	 }
 	 { 
