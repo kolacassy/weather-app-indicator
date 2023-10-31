@@ -17,3 +17,5 @@
 - Visit [Weather API](https://www.weatherapi.com) and register to generate your API key
 - User the API key on your .env file for REACT_APP_WEATHER_APIKEY
 
+## Node Version
+- Use Node v18.*
