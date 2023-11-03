@@ -5,7 +5,7 @@ const Form= props =>(
           <form onSubmit={props.getWeather}>
               <input style={({width:'100%'})} type= "text" name="city" placeholder="Toronto, Sokoto, New York"/>
               {/* <input type= "text" name="country" placeholder="COUNTRY"/> */}
-              <button>Get Weather</button>
+              <button>Fetch City Weather</button>
           </form>  
         );
 
