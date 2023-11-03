@@ -19,3 +19,6 @@
 
 ## Node Version
 - Use Node v18.*
+
+## Deploying 
+- This app is deployed over Jenkins into a Nexus Server, and from the Nexus server it is pulled into the Web server
