@@ -14,6 +14,9 @@
 
 ## Requirements
 - Copy the `.env.example` file into `.env` in the root directory
+  ```
+  cp .env.example .env
+  ```
 - Visit [Weather API](https://www.weatherapi.com) and register to generate your API key
 - User the API key on your .env file for REACT_APP_WEATHER_APIKEY
 
