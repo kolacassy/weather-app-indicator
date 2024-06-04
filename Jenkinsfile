@@ -1,8 +1,8 @@
-pipeline {
+    pipeline {
     agent any
     environment {
         SSH_CRED = credentials('web-server-key')
-        def CONNECT = 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-54-197-31-199.compute-1.amazonaws.com'
+        def CONNECT = 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-15-222-14-80.ca-central-1.compute.amazonaws.com'
     }
     stages {
 
@@ -27,7 +27,7 @@ pipeline {
                 echo 'building static react app'
                 sh "cd build && zip -r webapp.zip ."
                 sh "cd .."
-                sh 'curl -v -u admin:password --upload-file build/webapp.zip http://100.26.111.206:8081/repository/web-artifacts/webapp.zip'
+                sh 'curl -v -u admin:password --upload-file build/webapp.zip http://15.222.238.21:8081/repository/web-artifacts/webapp.zip'
             }
         }
         
@@ -37,7 +37,7 @@ pipeline {
                 
                 sshagent(['web-server-key']) {
                     sh '$CONNECT "sudo apt install zip -y"'
-                    sh '$CONNECT "curl -O http://100.26.111.206:8081/repository/web-artifacts/webapp.zip"'
+                    sh '$CONNECT "curl -O http://15.222.238.21:8081/repository/web-artifacts/webapp.zip"'
 
                     sh '$CONNECT "sudo rm -rf /var/www/html/"'
                     sh '$CONNECT "sudo mkdir /var/www/html/"'
