@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo 'install required packages'
                 sh "npm install"
-                sh "cp /home/ubuntu/.env .env"
+                sh "sudo cp /home/ubuntu/.env .env"
                 echo 'react packages installed'
             }
         }
